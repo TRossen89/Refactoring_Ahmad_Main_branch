@@ -1,9 +1,14 @@
+package util;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import model.Account;
+import model.Player;
 
 public class FileIO {
     File file;
@@ -25,7 +30,7 @@ public class FileIO {
                 data.add(line);
             }
         } catch (FileNotFoundException e) {
-             System.out.println("The file was not found");
+            System.out.println("The file was not found");
 
         }
 
@@ -33,14 +38,14 @@ public class FileIO {
     }
 
 
-    public void saveData(String path, ArrayList<Customer> customers){
+    public void saveData(String path, ArrayList<Player> players){
         FileWriter writer = null;
         try {
             writer = new FileWriter(path);
 
             writer.write("name, balance \n");
 
-            for (Customer c: customers) {
+            for (Player c: players) {
                 writer.write(c.getName()+","+c.getAccount().getBalance()+"\n");
             }
 
